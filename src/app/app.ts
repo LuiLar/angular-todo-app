@@ -1,15 +1,16 @@
 import { Component, signal } from '@angular/core';
+import { Form } from './form/form';
+import { List } from './list/list';
 
 @Component({
   selector: 'todo-app-root',
-  imports: [],
+  imports: [Form, List],
   template: `
-    <h1>Welcome to {{ title() }}!</h1>
-
-    
+    <main>
+      <todo-app-form />
+      <todo-app-list />
+    </main>
   `,
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = signal('angular-todo-app');
-}
+export class App {}
