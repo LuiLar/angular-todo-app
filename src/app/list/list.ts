@@ -6,13 +6,13 @@ import { Card } from './card/card';
   selector: 'todo-app-list',
   imports: [Card],
   template: `
-    @for (todo of allTodos; track todo.id) {
+    @for (todo of allTodos; track todo) {
     <todo-app-card [todo]="todo" />
     }
   `,
   styleUrl: './list.css',
 })
 export class List {
-  readonly todosService = inject(TodosService);
-  allTodos = this.todosService.getTodos();
+  protected readonly todosService = inject(TodosService);
+  protected readonly allTodos = this.todosService.getTodos();
 }

@@ -5,14 +5,14 @@ import { Todo } from '../../models/todo.model';
   providedIn: 'root',
 })
 export class TodosService {
-  todos: Todo[] = [
-    { id: 1, task: 'Sample Task', completed: false },
-    { id: 2, task: 'Another Task', completed: false },
-    { id: 3, task: 'More Tasks', completed: false },
+  protected readonly todos: Todo[] = [
+    { task: 'Sample Task', completed: false },
+    { task: 'Another Task', completed: false },
+    { task: 'More Tasks', completed: false },
   ];
 
   addTodo(task: string) {
-    this.todos.push({ id: this.todos.length + 1, task });
+    this.todos.push({ task });
   }
 
   getTodos() {

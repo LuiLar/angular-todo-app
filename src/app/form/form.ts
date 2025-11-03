@@ -14,13 +14,13 @@ import { TodosService } from '../services/todos/todos.service';
   styleUrl: './form.css',
 })
 export class Form {
-  readonly todoService = inject(TodosService);
+  protected readonly todoService = inject(TodosService);
 
-  addTaskForm = new FormGroup({
+  protected readonly addTaskForm = new FormGroup({
     taskDescription: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
   });
 
-  onSibmitHandler() {
+  protected onSibmitHandler() {
     this.todoService.addTodo(this.addTaskForm.value.taskDescription!);
     this.addTaskForm.reset();
   }

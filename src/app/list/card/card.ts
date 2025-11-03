@@ -16,15 +16,15 @@ import { Todo } from '../../models/todo.model';
   styleUrl: './card.css',
 })
 export class Card {
-  readonly todoService = inject(TodosService);
+  protected readonly todoService = inject(TodosService);
 
-  todo = input.required<Todo>();
+  readonly todo = input.required<Todo>();
 
-  completeTask() {
+  protected completeTask() {
     this.todoService.completeTodo(this.todo());
   }
 
-  removeTask() {
+  protected removeTask() {
     this.todoService.removeTodo(this.todo());
   }
 }
