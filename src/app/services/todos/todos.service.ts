@@ -6,9 +6,9 @@ import { Todo } from '../../models/todo.model';
 })
 export class TodosService {
   todos: Todo[] = [
-    { id: 1, task: 'Sample Task' },
-    { id: 2, task: 'Another Task' },
-    { id: 3, task: 'More Tasks' },
+    { id: 1, task: 'Sample Task', completed: false },
+    { id: 2, task: 'Another Task', completed: false },
+    { id: 3, task: 'More Tasks', completed: false },
   ];
 
   addTodo(task: string) {
@@ -17,6 +17,13 @@ export class TodosService {
 
   getTodos() {
     return this.todos;
+  }
+
+  completeTodo(todo: Todo) {
+    const index = this.todos.indexOf(todo);
+    if (index !== -1) {
+      this.todos[index].completed = true;
+    }
   }
 
   removeTodo(todo: Todo) {

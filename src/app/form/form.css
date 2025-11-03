@@ -2,3 +2,20 @@ form {
   display: flex;
   gap: 8px;
 }
+
+input,
+button {
+  font-size: larger;
+}
+
+button {
+  padding: 10px 30px;
+}
+
+button:enabled {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

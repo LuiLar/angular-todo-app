@@ -4,21 +4,27 @@ import { Todo } from '../../models/todo.model';
 
 @Component({
   selector: 'todo-app-card',
-  imports: [],
   template: `
-    <p>{{ todo()?.task }}</p>
-    <button (click)="removeTask()">Delete</button>
+    @let currentTodo = todo();
+
+    <p [class.completed]="currentTodo.completed">{{ currentTodo.task }}</p>
+    <section>
+      <button (click)="completeTask()">✅</button>
+      <button (click)="removeTask()">❌</button>
+    </section>
   `,
   styleUrl: './card.css',
 })
 export class Card {
   readonly todoService = inject(TodosService);
 
-  todo = input<Todo>();
-  todoToRemove?: Todo;
+  todo = input.required<Todo>();
+
+  completeTask() {
+    this.todoService.completeTodo(this.todo());
+  }
 
   removeTask() {
-    this.todoToRemove = this.todo();
-    this.todoToRemove && this.todoService.removeTodo(this.todoToRemove);
+    this.todoService.removeTodo(this.todo());
   }
 }

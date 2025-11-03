@@ -6,10 +6,8 @@ import { List } from './list/list';
   selector: 'todo-app-root',
   imports: [Form, List],
   template: `
-    <main>
-      <todo-app-form />
-      <todo-app-list />
-    </main>
+    <todo-app-form />
+    <todo-app-list />
   `,
   styleUrl: './app.css',
 })
